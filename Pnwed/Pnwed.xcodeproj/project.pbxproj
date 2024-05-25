@@ -32,6 +32,9 @@
 		64F6A6342C027207004E6E95 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6332C027207004E6E95 /* MainTabBar.swift */; };
 		64F6A6382C0272B4004E6E95 /* LeaksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6372C0272B4004E6E95 /* LeaksVC.swift */; };
 		64F6A63A2C0272C1004E6E95 /* AdBlockerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6392C0272C1004E6E95 /* AdBlockerVC.swift */; };
+		64F6A63D2C027520004E6E95 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A63C2C027520004E6E95 /* SwitchCell.swift */; };
+		64F6A63F2C02783B004E6E95 /* SwitchCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A63E2C02783B004E6E95 /* SwitchCellModel.swift */; };
+		64F6A6422C0282DE004E6E95 /* AdBlockerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6412C0282DE004E6E95 /* AdBlockerViewModel.swift */; };
 		89B5F0C6CE31B9365076E1FF /* Pods_PnwedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +87,9 @@
 		64F6A6332C027207004E6E95 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		64F6A6372C0272B4004E6E95 /* LeaksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaksVC.swift; sourceTree = "<group>"; };
 		64F6A6392C0272C1004E6E95 /* AdBlockerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBlockerVC.swift; sourceTree = "<group>"; };
+		64F6A63C2C027520004E6E95 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		64F6A63E2C02783B004E6E95 /* SwitchCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCellModel.swift; sourceTree = "<group>"; };
+		64F6A6412C0282DE004E6E95 /* AdBlockerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBlockerViewModel.swift; sourceTree = "<group>"; };
 		713807CE7338D4C4807E7223 /* Pods-Pnwed-PnwedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed-PnwedUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pnwed-PnwedUITests/Pods-Pnwed-PnwedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDA3EE07BE0EEFF368C03E6B /* Pods-Pnwed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed.release.xcconfig"; path = "Target Support Files/Pods-Pnwed/Pods-Pnwed.release.xcconfig"; sourceTree = "<group>"; };
 		C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PnwedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +267,8 @@
 		64F6A6352C02728F004E6E95 /* AdBlocker */ = {
 			isa = PBXGroup;
 			children = (
+				64F6A6402C0282CB004E6E95 /* ViewModel */,
+				64F6A63B2C0274D3004E6E95 /* SwitchCell */,
 				64F6A6392C0272C1004E6E95 /* AdBlockerVC.swift */,
 			);
 			path = AdBlocker;
@@ -272,6 +280,23 @@
 				64F6A6372C0272B4004E6E95 /* LeaksVC.swift */,
 			);
 			path = Leaks;
+			sourceTree = "<group>";
+		};
+		64F6A63B2C0274D3004E6E95 /* SwitchCell */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A63C2C027520004E6E95 /* SwitchCell.swift */,
+				64F6A63E2C02783B004E6E95 /* SwitchCellModel.swift */,
+			);
+			path = SwitchCell;
+			sourceTree = "<group>";
+		};
+		64F6A6402C0282CB004E6E95 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A6412C0282DE004E6E95 /* AdBlockerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		82F1CF0BDE8E65241F2C00CE /* Frameworks */ = {
@@ -547,11 +572,14 @@
 				64F6A61D2C01E7E5004E6E95 /* ProjectConstants.swift in Sources */,
 				64EEC60F2BFE687A00C895F8 /* PNWService.swift in Sources */,
 				64F6A62E2C026FD2004E6E95 /* UserDefaultsKeys.swift in Sources */,
+				64F6A63D2C027520004E6E95 /* SwitchCell.swift in Sources */,
 				64EEC5DE2BFE5FC700C895F8 /* ViewController.swift in Sources */,
 				64EEC5DA2BFE5FC700C895F8 /* AppDelegate.swift in Sources */,
+				64F6A63F2C02783B004E6E95 /* SwitchCellModel.swift in Sources */,
 				64F6A6202C025757004E6E95 /* NetworkManagerProtocol.swift in Sources */,
 				64F6A63A2C0272C1004E6E95 /* AdBlockerVC.swift in Sources */,
 				64EEC5DC2BFE5FC700C895F8 /* SceneDelegate.swift in Sources */,
+				64F6A6422C0282DE004E6E95 /* AdBlockerViewModel.swift in Sources */,
 				64F6A6222C0258BD004E6E95 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
