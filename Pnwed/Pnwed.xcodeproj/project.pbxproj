@@ -18,6 +18,14 @@
 		64EEC5F12BFE5FC800C895F8 /* PnwedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEC5F02BFE5FC800C895F8 /* PnwedTests.swift */; };
 		64EEC5FB2BFE5FC800C895F8 /* PnwedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEC5FA2BFE5FC800C895F8 /* PnwedUITests.swift */; };
 		64EEC5FD2BFE5FC800C895F8 /* PnwedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEC5FC2BFE5FC800C895F8 /* PnwedUITestsLaunchTests.swift */; };
+		64EEC60C2BFE65FC00C895F8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEC60B2BFE65FC00C895F8 /* NetworkManager.swift */; };
+		64EEC60F2BFE687A00C895F8 /* PNWService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EEC60E2BFE687A00C895F8 /* PNWService.swift */; };
+		64F6A61B2C01E70A004E6E95 /* PNWEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A61A2C01E70A004E6E95 /* PNWEndpoint.swift */; };
+		64F6A61D2C01E7E5004E6E95 /* ProjectConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A61C2C01E7E5004E6E95 /* ProjectConstants.swift */; };
+		64F6A6202C025757004E6E95 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A61F2C025757004E6E95 /* NetworkManagerProtocol.swift */; };
+		64F6A6222C0258BD004E6E95 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6212C0258BD004E6E95 /* NetworkError.swift */; };
+		64F6A6242C025A60004E6E95 /* Breach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6232C025A60004E6E95 /* Breach.swift */; };
+		64F6A6272C026DC2004E6E95 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6262C026DC2004E6E95 /* String+Extension.swift */; };
 		89B5F0C6CE31B9365076E1FF /* Pods_PnwedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +64,14 @@
 		64EEC5F62BFE5FC800C895F8 /* PnwedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PnwedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64EEC5FA2BFE5FC800C895F8 /* PnwedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PnwedUITests.swift; sourceTree = "<group>"; };
 		64EEC5FC2BFE5FC800C895F8 /* PnwedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PnwedUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		64EEC60B2BFE65FC00C895F8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		64EEC60E2BFE687A00C895F8 /* PNWService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNWService.swift; sourceTree = "<group>"; };
+		64F6A61A2C01E70A004E6E95 /* PNWEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNWEndpoint.swift; sourceTree = "<group>"; };
+		64F6A61C2C01E7E5004E6E95 /* ProjectConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectConstants.swift; sourceTree = "<group>"; };
+		64F6A61F2C025757004E6E95 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
+		64F6A6212C0258BD004E6E95 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		64F6A6232C025A60004E6E95 /* Breach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breach.swift; sourceTree = "<group>"; };
+		64F6A6262C026DC2004E6E95 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		713807CE7338D4C4807E7223 /* Pods-Pnwed-PnwedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed-PnwedUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pnwed-PnwedUITests/Pods-Pnwed-PnwedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDA3EE07BE0EEFF368C03E6B /* Pods-Pnwed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed.release.xcconfig"; path = "Target Support Files/Pods-Pnwed/Pods-Pnwed.release.xcconfig"; sourceTree = "<group>"; };
 		C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PnwedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +132,10 @@
 		64EEC5D82BFE5FC700C895F8 /* Pnwed */ = {
 			isa = PBXGroup;
 			children = (
+				64F6A6252C026DB5004E6E95 /* Utils */,
+				64EEC6102BFE690000C895F8 /* Models */,
+				64EEC60D2BFE682D00C895F8 /* Services */,
+				64EEC60A2BFE65EA00C895F8 /* Network */,
 				64EEC5D92BFE5FC700C895F8 /* AppDelegate.swift */,
 				64EEC5DB2BFE5FC700C895F8 /* SceneDelegate.swift */,
 				64EEC5DD2BFE5FC700C895F8 /* ViewController.swift */,
@@ -144,6 +164,58 @@
 			path = PnwedUITests;
 			sourceTree = "<group>";
 		};
+		64EEC60A2BFE65EA00C895F8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A61E2C025743004E6E95 /* NetworkManager */,
+				64F6A6192C01E6D8004E6E95 /* Endpoints */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		64EEC60D2BFE682D00C895F8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				64EEC60E2BFE687A00C895F8 /* PNWService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		64EEC6102BFE690000C895F8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A6232C025A60004E6E95 /* Breach.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		64F6A6192C01E6D8004E6E95 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A61A2C01E70A004E6E95 /* PNWEndpoint.swift */,
+				64F6A61C2C01E7E5004E6E95 /* ProjectConstants.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		64F6A61E2C025743004E6E95 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				64EEC60B2BFE65FC00C895F8 /* NetworkManager.swift */,
+				64F6A61F2C025757004E6E95 /* NetworkManagerProtocol.swift */,
+				64F6A6212C0258BD004E6E95 /* NetworkError.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		64F6A6252C026DB5004E6E95 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A6262C026DC2004E6E95 /* String+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		82F1CF0BDE8E65241F2C00CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +236,6 @@
 				48E327C93897B30618650F28 /* Pods-PnwedTests.debug.xcconfig */,
 				513CEAB62F977A9A97190EAC /* Pods-PnwedTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -407,9 +478,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F6A6242C025A60004E6E95 /* Breach.swift in Sources */,
+				64F6A6272C026DC2004E6E95 /* String+Extension.swift in Sources */,
+				64F6A61B2C01E70A004E6E95 /* PNWEndpoint.swift in Sources */,
+				64EEC60C2BFE65FC00C895F8 /* NetworkManager.swift in Sources */,
+				64F6A61D2C01E7E5004E6E95 /* ProjectConstants.swift in Sources */,
+				64EEC60F2BFE687A00C895F8 /* PNWService.swift in Sources */,
 				64EEC5DE2BFE5FC700C895F8 /* ViewController.swift in Sources */,
 				64EEC5DA2BFE5FC700C895F8 /* AppDelegate.swift in Sources */,
+				64F6A6202C025757004E6E95 /* NetworkManagerProtocol.swift in Sources */,
 				64EEC5DC2BFE5FC700C895F8 /* SceneDelegate.swift in Sources */,
+				64F6A6222C0258BD004E6E95 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N835J7CFBP;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pnwed/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -622,6 +702,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N835J7CFBP;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pnwed/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
