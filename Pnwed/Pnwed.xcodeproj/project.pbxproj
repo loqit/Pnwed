@@ -26,6 +26,9 @@
 		64F6A6222C0258BD004E6E95 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6212C0258BD004E6E95 /* NetworkError.swift */; };
 		64F6A6242C025A60004E6E95 /* Breach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6232C025A60004E6E95 /* Breach.swift */; };
 		64F6A6272C026DC2004E6E95 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6262C026DC2004E6E95 /* String+Extension.swift */; };
+		64F6A62A2C026F6D004E6E95 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6292C026F6D004E6E95 /* UserDefaultsWrapper.swift */; };
+		64F6A62C2C026FA6004E6E95 /* UserDefaultsConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A62B2C026FA6004E6E95 /* UserDefaultsConvertible.swift */; };
+		64F6A62E2C026FD2004E6E95 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A62D2C026FD2004E6E95 /* UserDefaultsKeys.swift */; };
 		89B5F0C6CE31B9365076E1FF /* Pods_PnwedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,9 @@
 		64F6A6212C0258BD004E6E95 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		64F6A6232C025A60004E6E95 /* Breach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breach.swift; sourceTree = "<group>"; };
 		64F6A6262C026DC2004E6E95 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		64F6A6292C026F6D004E6E95 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		64F6A62B2C026FA6004E6E95 /* UserDefaultsConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConvertible.swift; sourceTree = "<group>"; };
+		64F6A62D2C026FD2004E6E95 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		713807CE7338D4C4807E7223 /* Pods-Pnwed-PnwedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed-PnwedUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pnwed-PnwedUITests/Pods-Pnwed-PnwedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDA3EE07BE0EEFF368C03E6B /* Pods-Pnwed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed.release.xcconfig"; path = "Target Support Files/Pods-Pnwed/Pods-Pnwed.release.xcconfig"; sourceTree = "<group>"; };
 		C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PnwedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,9 +217,20 @@
 		64F6A6252C026DB5004E6E95 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				64F6A6282C026F59004E6E95 /* UserDefaults */,
 				64F6A6262C026DC2004E6E95 /* String+Extension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		64F6A6282C026F59004E6E95 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A6292C026F6D004E6E95 /* UserDefaultsWrapper.swift */,
+				64F6A62B2C026FA6004E6E95 /* UserDefaultsConvertible.swift */,
+				64F6A62D2C026FD2004E6E95 /* UserDefaultsKeys.swift */,
+			);
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 		82F1CF0BDE8E65241F2C00CE /* Frameworks */ = {
@@ -482,8 +499,11 @@
 				64F6A6272C026DC2004E6E95 /* String+Extension.swift in Sources */,
 				64F6A61B2C01E70A004E6E95 /* PNWEndpoint.swift in Sources */,
 				64EEC60C2BFE65FC00C895F8 /* NetworkManager.swift in Sources */,
+				64F6A62C2C026FA6004E6E95 /* UserDefaultsConvertible.swift in Sources */,
+				64F6A62A2C026F6D004E6E95 /* UserDefaultsWrapper.swift in Sources */,
 				64F6A61D2C01E7E5004E6E95 /* ProjectConstants.swift in Sources */,
 				64EEC60F2BFE687A00C895F8 /* PNWService.swift in Sources */,
+				64F6A62E2C026FD2004E6E95 /* UserDefaultsKeys.swift in Sources */,
 				64EEC5DE2BFE5FC700C895F8 /* ViewController.swift in Sources */,
 				64EEC5DA2BFE5FC700C895F8 /* AppDelegate.swift in Sources */,
 				64F6A6202C025757004E6E95 /* NetworkManagerProtocol.swift in Sources */,
