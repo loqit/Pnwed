@@ -65,7 +65,6 @@ class SwitchCell: UITableViewCell {
         }
     }
     
-    // TODO: - Test it again
     @objc
     private func handleSwitch() {
         guard let settingKey else { return }

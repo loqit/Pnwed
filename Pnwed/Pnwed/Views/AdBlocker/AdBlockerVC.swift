@@ -76,7 +76,9 @@ class AdBlockerVC: UIViewController {
     
     @objc
     private func handlePremiumButton() {
-        
+        let paywallVC = PaywallVC()
+      //  paywallVC.modalPresentationStyle = .overFullScreen
+        self.present(paywallVC, animated: true)
     }
 }
 
