@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class ModalCheckVC: UIViewController {
     
@@ -44,6 +45,7 @@ class ModalCheckVC: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
         button.setTitle("Save Response", for: .normal)
+      //  button.isEnabled = false
         return button
     }()
     
@@ -55,6 +57,8 @@ class ModalCheckVC: UIViewController {
     
     private let checkType: CheckType
     private let viewModel = ModalCheckViewModel()
+    
+    var checkSaved = PassthroughSubject<Void, Never>()
     
     // MARK: - Init
     
@@ -163,6 +167,7 @@ class ModalCheckVC: UIViewController {
                                                      placement: "recentChecks",
                                                      breaches: nil,
                                                      stringResult: resultLabel.text ?? ""), recentCheck: true)
+                    checkSaved.send()
                     return
                 }
                 resultLabel.text = "Your password have been compromised \(result) times"
@@ -171,6 +176,7 @@ class ModalCheckVC: UIViewController {
                                                  placement: "recentChecks",
                                                  breaches: nil,
                                                  stringResult: resultLabel.text ?? ""), recentCheck: true)
+                checkSaved.send()
             } catch {
                 resultLabel.text = "Something went wrong. Please, try again!"
                 resultLabel.tintColor = .red
@@ -192,6 +198,7 @@ class ModalCheckVC: UIViewController {
                                                  placement: "recentChecks",
                                                  breaches: result,
                                                  stringResult: resultLabel.text ?? ""), recentCheck: true)
+                checkSaved.send()
             } catch {
                 resultLabel.text = "Something went wrong. Please, try again!"
                 resultLabel.tintColor = .red

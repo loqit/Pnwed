@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class LeaksVC: UIViewController {
     
@@ -26,6 +27,7 @@ class LeaksVC: UIViewController {
     
     private let viewModel = LeaksViewModel()
     private var selectedSegmentIndex = 0
+    private var subscriptions = Set<AnyCancellable>()
     
     // MARK: - Lifecycle
     
@@ -98,6 +100,13 @@ class LeaksVC: UIViewController {
     
     private func presentCheckModal(for checkType: CheckType) {
         let checkVC = ModalCheckVC(checkType: checkType)
+        checkVC.checkSaved
+            .sink { [weak self] in
+                guard let self else { return }
+                self.viewModel.fetchChecks()
+                self.leaksTableView.reloadData()
+            }
+            .store(in: &subscriptions)
         present(checkVC, animated: true, completion: nil)
     }
 }
@@ -126,6 +135,19 @@ extension LeaksVC: UITableViewDelegate, UITableViewDataSource {
             DispatchQueue.main.async {
                 self.present(detailsVC, animated: true)
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return selectedSegmentIndex == 1
+    }
+    
+    func tableView(_ tableView: UITableView, 
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && selectedSegmentIndex == 1 {
+            viewModel.deleteCheck(by: viewModel.historyChecks[indexPath.row].id)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
 }
