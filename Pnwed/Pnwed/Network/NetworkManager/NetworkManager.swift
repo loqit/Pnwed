@@ -26,6 +26,7 @@ final class NetworkManager: NetworkManagerProtocol {
         request.addValue("hibp-api-key: \(ProjectConstants.apiKey)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         let (data, response) = try await urlSession.data(for: request)
+        print("🤡", response)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
             if (response as? HTTPURLResponse)?.statusCode == 404 {
                 throw NetworkError.notFound

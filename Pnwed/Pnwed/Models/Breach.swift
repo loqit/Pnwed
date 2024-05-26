@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 struct Breach: Codable {
     let name: String

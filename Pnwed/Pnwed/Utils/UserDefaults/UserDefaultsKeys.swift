@@ -12,4 +12,6 @@ enum UserDefaultsKeys: String {
     case enableTracking = "enableTracking"
     case enableAds = "enableAds"
     case enablePushes = "enablePushes"
+    
+    case checks = "checks"
 }

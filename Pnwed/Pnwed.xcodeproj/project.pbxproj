@@ -39,6 +39,10 @@
 		64F6A6482C033B8B004E6E95 /* LeakCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6472C033B8B004E6E95 /* LeakCell.swift */; };
 		64F6A64B2C033F03004E6E95 /* ModalCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A64A2C033F03004E6E95 /* ModalCheckVC.swift */; };
 		64F6A64D2C03448E004E6E95 /* ModalCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A64C2C03448E004E6E95 /* ModalCheckViewModel.swift */; };
+		64F6A6512C034C49004E6E95 /* BreachDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6502C034C49004E6E95 /* BreachDetailCell.swift */; };
+		64F6A6532C034CDA004E6E95 /* BreachDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6522C034CDA004E6E95 /* BreachDetailsVC.swift */; };
+		64F6A65C2C03550D004E6E95 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A65A2C03550D004E6E95 /* Model.xcdatamodeld */; };
+		64F6A65E2C03677D004E6E95 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A65D2C03677D004E6E95 /* Check.swift */; };
 		89B5F0C6CE31B9365076E1FF /* Pods_PnwedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +102,10 @@
 		64F6A6472C033B8B004E6E95 /* LeakCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeakCell.swift; sourceTree = "<group>"; };
 		64F6A64A2C033F03004E6E95 /* ModalCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCheckVC.swift; sourceTree = "<group>"; };
 		64F6A64C2C03448E004E6E95 /* ModalCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCheckViewModel.swift; sourceTree = "<group>"; };
+		64F6A6502C034C49004E6E95 /* BreachDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreachDetailCell.swift; sourceTree = "<group>"; };
+		64F6A6522C034CDA004E6E95 /* BreachDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreachDetailsVC.swift; sourceTree = "<group>"; };
+		64F6A65B2C03550D004E6E95 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		64F6A65D2C03677D004E6E95 /* Check.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Check.swift; sourceTree = "<group>"; };
 		713807CE7338D4C4807E7223 /* Pods-Pnwed-PnwedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed-PnwedUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pnwed-PnwedUITests/Pods-Pnwed-PnwedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDA3EE07BE0EEFF368C03E6B /* Pods-Pnwed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed.release.xcconfig"; path = "Target Support Files/Pods-Pnwed/Pods-Pnwed.release.xcconfig"; sourceTree = "<group>"; };
 		C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PnwedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +178,7 @@
 				64EEC5E22BFE5FC800C895F8 /* Assets.xcassets */,
 				64EEC5E42BFE5FC800C895F8 /* LaunchScreen.storyboard */,
 				64EEC5E72BFE5FC800C895F8 /* Info.plist */,
+				64F6A65A2C03550D004E6E95 /* Model.xcdatamodeld */,
 			);
 			path = Pnwed;
 			sourceTree = "<group>";
@@ -212,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				64F6A6232C025A60004E6E95 /* Breach.swift */,
+				64F6A65D2C03677D004E6E95 /* Check.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -257,6 +267,7 @@
 		64F6A62F2C02717A004E6E95 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				64F6A64E2C034C17004E6E95 /* BreachDetails */,
 				64F6A6362C02729B004E6E95 /* Leaks */,
 				64F6A6352C02728F004E6E95 /* AdBlocker */,
 				64F6A6302C027181004E6E95 /* TabBar */,
@@ -329,10 +340,35 @@
 		64F6A6492C033EC9004E6E95 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				64F6A65F2C0367D2004E6E95 /* ViewModel */,
 				64F6A64A2C033F03004E6E95 /* ModalCheckVC.swift */,
-				64F6A64C2C03448E004E6E95 /* ModalCheckViewModel.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		64F6A64E2C034C17004E6E95 /* BreachDetails */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A64F2C034C22004E6E95 /* BreachCell */,
+				64F6A6522C034CDA004E6E95 /* BreachDetailsVC.swift */,
+			);
+			path = BreachDetails;
+			sourceTree = "<group>";
+		};
+		64F6A64F2C034C22004E6E95 /* BreachCell */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A6502C034C49004E6E95 /* BreachDetailCell.swift */,
+			);
+			path = BreachCell;
+			sourceTree = "<group>";
+		};
+		64F6A65F2C0367D2004E6E95 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A64C2C03448E004E6E95 /* ModalCheckViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		82F1CF0BDE8E65241F2C00CE /* Frameworks */ = {
@@ -597,9 +633,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F6A65E2C03677D004E6E95 /* Check.swift in Sources */,
 				64F6A6242C025A60004E6E95 /* Breach.swift in Sources */,
 				64F6A6382C0272B4004E6E95 /* LeaksVC.swift in Sources */,
 				64F6A6272C026DC2004E6E95 /* String+Extension.swift in Sources */,
+				64F6A65C2C03550D004E6E95 /* Model.xcdatamodeld in Sources */,
 				64F6A61B2C01E70A004E6E95 /* PNWEndpoint.swift in Sources */,
 				64F6A6342C027207004E6E95 /* MainTabBar.swift in Sources */,
 				64EEC60C2BFE65FC00C895F8 /* NetworkManager.swift in Sources */,
@@ -613,9 +651,11 @@
 				64F6A63D2C027520004E6E95 /* SwitchCell.swift in Sources */,
 				64EEC5DE2BFE5FC700C895F8 /* ViewController.swift in Sources */,
 				64F6A6482C033B8B004E6E95 /* LeakCell.swift in Sources */,
+				64F6A6532C034CDA004E6E95 /* BreachDetailsVC.swift in Sources */,
 				64EEC5DA2BFE5FC700C895F8 /* AppDelegate.swift in Sources */,
 				64F6A63F2C02783B004E6E95 /* SwitchCellModel.swift in Sources */,
 				64F6A6202C025757004E6E95 /* NetworkManagerProtocol.swift in Sources */,
+				64F6A6512C034C49004E6E95 /* BreachDetailCell.swift in Sources */,
 				64F6A64D2C03448E004E6E95 /* ModalCheckViewModel.swift in Sources */,
 				64F6A63A2C0272C1004E6E95 /* AdBlockerVC.swift in Sources */,
 				64EEC5DC2BFE5FC700C895F8 /* SceneDelegate.swift in Sources */,
@@ -975,6 +1015,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		64F6A65A2C03550D004E6E95 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				64F6A65B2C03550D004E6E95 /* Model.xcdatamodel */,
+			);
+			currentVersion = 64F6A65B2C03550D004E6E95 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = /Users/andrejbobr/PetProjects/Pnwed/Pnwed/Pnwed/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 64EEC5CE2BFE5FC700C895F8 /* Project object */;
 }

@@ -26,20 +26,25 @@ class LeaksVC: UIViewController {
     
     private let viewModel = LeaksViewModel()
     private var selectedSegmentIndex = 0
-
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
     }
     
+    // MARK: - Setup
+    
+    // TODO: Add trigers to reload table view
     private func setupView() {
         view.backgroundColor = .white
         setupNavigationBar()
         setupSegmentedControl()
         setupTableView()
         
-        viewModel.fetchCheckData()
+        viewModel.fetchChecks()
         leaksTableView.reloadData()
     }
     
@@ -72,6 +77,8 @@ class LeaksVC: UIViewController {
         }
     }
     
+    // MARK: - Actions & Navigation
+    
     @objc private func segmentChanged() {
         selectedSegmentIndex = segmentedControl.selectedSegmentIndex
         leaksTableView.reloadData()
@@ -91,7 +98,6 @@ class LeaksVC: UIViewController {
     
     private func presentCheckModal(for checkType: CheckType) {
         let checkVC = ModalCheckVC(checkType: checkType)
-       // let navController = UINavigationController(rootViewController: checkVC)
         present(checkVC, animated: true, completion: nil)
     }
 }
@@ -110,5 +116,16 @@ extension LeaksVC: UITableViewDelegate, UITableViewDataSource {
         let check = selectedSegmentIndex == 0 ? viewModel.recentChecks[indexPath.row] : viewModel.historyChecks[indexPath.row]
         cell.configure(with: check)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, 
+                   didSelectRowAt indexPath: IndexPath) {
+        let check = selectedSegmentIndex == 0 ? viewModel.recentChecks[indexPath.row] : viewModel.historyChecks[indexPath.row]
+        if check.type.contains("Account") && !(check.breaches?.isEmpty ?? true) {
+            let detailsVC = BreachDetailVC(breaches: check.breaches ?? [])
+            DispatchQueue.main.async {
+                self.present(detailsVC, animated: true)
+            }
+        }
     }
 }

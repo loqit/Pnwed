@@ -56,6 +56,6 @@ class LeakCell: UITableViewCell {
     
     func configure(with check: Check) {
         checkTypeLabel.text = check.type
-        resultLabel.text = check.result
+        resultLabel.text = check.stringResult
     }
 }

@@ -11,9 +11,23 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        Task {
+            await getData()
+        }
     }
 
-
+    private func getData() async {
+        do {
+            let pnwService = PNWService(networkManager: NetworkManager())
+            let data = try await pnwService.checkPassword(password: "123456")
+            print("🤡", data)
+            
+            let breaches = try await pnwService.getBreachesData(account: "bobrandrey1972@gmail.com")
+            print("🤡 breaches", breaches)
+        } catch {
+            print(error)
+        }
+    }
 }
 

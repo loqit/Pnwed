@@ -39,6 +39,14 @@ class ModalCheckVC: UIViewController {
         return label
     }()
     
+    private lazy var saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        button.setTitle("Save Response", for: .normal)
+        return button
+    }()
+    
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.hidesWhenStopped = true
@@ -105,6 +113,12 @@ class ModalCheckVC: UIViewController {
             make.trailing.equalToSuperview().offset(-20)
         }
         
+        view.addSubview(saveButton)
+        saveButton.snp.makeConstraints { make in
+            make.top.equalTo(resultLabel.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
         view.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -122,6 +136,14 @@ class ModalCheckVC: UIViewController {
         performCheck(for: input)
     }
     
+    // TODO: Refactor this
+    @objc private func addButtonPressed() {
+        viewModel.saveCheck(check: .init(type: checkType == .account ? "Account Check: \(inputTextField.text ?? "")" : "Password Check",
+                                         placement: "history",
+                                         breaches: viewModel.breaches,
+                                         stringResult: resultLabel.text ?? ""))
+    }
+    
     private func performCheck(for input: String) {
         switch checkType {
         case .password:
@@ -137,10 +159,18 @@ class ModalCheckVC: UIViewController {
                 guard let result = try await viewModel.checkPassword(password: password) else {
                     resultLabel.text = "Your password is safe"
                     resultLabel.textColor = .black
+                    viewModel.saveCheck(check: .init(type: "Password Check",
+                                                     placement: "recentChecks",
+                                                     breaches: nil,
+                                                     stringResult: resultLabel.text ?? ""), recentCheck: true)
                     return
                 }
                 resultLabel.text = "Your password have been compromised \(result) times"
                 resultLabel.textColor = .black
+                viewModel.saveCheck(check: .init(type: "Password Check",
+                                                 placement: "recentChecks",
+                                                 breaches: nil,
+                                                 stringResult: resultLabel.text ?? ""), recentCheck: true)
             } catch {
                 resultLabel.text = "Something went wrong. Please, try again!"
                 resultLabel.tintColor = .red
@@ -156,8 +186,12 @@ class ModalCheckVC: UIViewController {
         Task {
             do {
                 let result: [Breach] = try await viewModel.checkAccount(account: account)
-                resultLabel.text = result.isEmpty ? "Your account is safe" : "Your account have been compromised \(result) times"
+                resultLabel.text = result.isEmpty ? "Your account is safe" : "Your account have been compromised \(result.count) times"
                 resultLabel.textColor = .black
+                viewModel.saveCheck(check: .init(type: "Account Check: \(inputTextField.text ?? "")",
+                                                 placement: "recentChecks",
+                                                 breaches: result,
+                                                 stringResult: resultLabel.text ?? ""), recentCheck: true)
             } catch {
                 resultLabel.text = "Something went wrong. Please, try again!"
                 resultLabel.tintColor = .red
