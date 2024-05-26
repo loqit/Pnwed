@@ -20,11 +20,16 @@ class SwitchCell: UITableViewCell {
         return label
     }()
     
-    private lazy var cellSwitch: UISwitch = {
-        let cellSwitch = UISwitch()
-        cellSwitch.translatesAutoresizingMaskIntoConstraints = false
-        cellSwitch.addTarget(self, action: #selector(handleSwitch), for: .valueChanged)
-        return cellSwitch
+    private lazy var toggleButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Off", for: .normal)
+        button.backgroundColor = .red
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(handleButtonToggle), for: .touchUpInside)
+        button.layer.cornerRadius = 15
+        button.layer.masksToBounds = true
+        return button
     }()
     
     private var settingKey: UserDefaultsKeys?
@@ -46,7 +51,8 @@ class SwitchCell: UITableViewCell {
     func setupCell(from model: SwitchCellModel) {
         title.text = model.title
         settingKey = model.userDefaultsKey
-        cellSwitch.isOn = UserDefaultsWrapper.shared.get(forKey: model.userDefaultsKey, defaultValue: false)
+        let isOn = UserDefaultsWrapper.shared.get(forKey: model.userDefaultsKey, defaultValue: false)
+        updateButtonState(isOn: isOn, animated: false)
     }
     
     // MARK: - Setup
@@ -58,16 +64,40 @@ class SwitchCell: UITableViewCell {
             make.centerY.equalToSuperview()
         }
         
-        contentView.addSubview(cellSwitch)
-        cellSwitch.snp.makeConstraints { make in
+        contentView.addSubview(toggleButton)
+        toggleButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-10)
             make.centerY.equalToSuperview()
+            make.width.equalTo(60)
+            make.height.equalTo(30)
         }
     }
     
     @objc
-    private func handleSwitch() {
+    private func handleButtonToggle() {
         guard let settingKey else { return }
-        UserDefaultsWrapper.shared.set(cellSwitch.isOn, forKey: settingKey)
+        let isOn = toggleButton.title(for: .normal) == "Off"
+        updateButtonState(isOn: isOn, animated: true)
+        UserDefaultsWrapper.shared.set(isOn, forKey: settingKey)
+    }
+    
+    private func updateButtonState(isOn: Bool, animated: Bool) {
+        let newTitle = isOn ? "On" : "Off"
+        let newColor: UIColor = isOn ? .systemGreen : .systemRed
+        
+        let updates = {
+            self.toggleButton.setTitle(newTitle, for: .normal)
+            self.toggleButton.backgroundColor = newColor
+        }
+        
+        if animated {
+            UIView.transition(with: toggleButton, 
+                              duration: 0.3,
+                              options: .transitionCrossDissolve, 
+                              animations: updates,
+                              completion: nil)
+        } else {
+            updates()
+        }
     }
 }
