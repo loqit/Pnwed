@@ -17,9 +17,10 @@ class MainTabBar: UITabBarController {
     
     private func setupTabBar() {
         let adBlockVC = AdBlockerVC()
+        
         adBlockVC.tabBarItem = UITabBarItem(title: "AdBlocker", image: UIImage(systemName: "shield"), tag: 0)
         
-        let leaksVC = LeaksVC()
+        let leaksVC = UINavigationController(rootViewController: LeaksVC())
         leaksVC.tabBarItem = UITabBarItem(title: "Leaks", image: UIImage(systemName: "exclamationmark.triangle"), tag: 1)
         
         viewControllers = [adBlockVC, leaksVC]

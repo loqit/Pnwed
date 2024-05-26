@@ -35,6 +35,10 @@
 		64F6A63D2C027520004E6E95 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A63C2C027520004E6E95 /* SwitchCell.swift */; };
 		64F6A63F2C02783B004E6E95 /* SwitchCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A63E2C02783B004E6E95 /* SwitchCellModel.swift */; };
 		64F6A6422C0282DE004E6E95 /* AdBlockerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6412C0282DE004E6E95 /* AdBlockerViewModel.swift */; };
+		64F6A6452C033B6B004E6E95 /* LeaksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6442C033B6B004E6E95 /* LeaksViewModel.swift */; };
+		64F6A6482C033B8B004E6E95 /* LeakCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6472C033B8B004E6E95 /* LeakCell.swift */; };
+		64F6A64B2C033F03004E6E95 /* ModalCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A64A2C033F03004E6E95 /* ModalCheckVC.swift */; };
+		64F6A64D2C03448E004E6E95 /* ModalCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A64C2C03448E004E6E95 /* ModalCheckViewModel.swift */; };
 		89B5F0C6CE31B9365076E1FF /* Pods_PnwedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +94,10 @@
 		64F6A63C2C027520004E6E95 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		64F6A63E2C02783B004E6E95 /* SwitchCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCellModel.swift; sourceTree = "<group>"; };
 		64F6A6412C0282DE004E6E95 /* AdBlockerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBlockerViewModel.swift; sourceTree = "<group>"; };
+		64F6A6442C033B6B004E6E95 /* LeaksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaksViewModel.swift; sourceTree = "<group>"; };
+		64F6A6472C033B8B004E6E95 /* LeakCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeakCell.swift; sourceTree = "<group>"; };
+		64F6A64A2C033F03004E6E95 /* ModalCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCheckVC.swift; sourceTree = "<group>"; };
+		64F6A64C2C03448E004E6E95 /* ModalCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCheckViewModel.swift; sourceTree = "<group>"; };
 		713807CE7338D4C4807E7223 /* Pods-Pnwed-PnwedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed-PnwedUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pnwed-PnwedUITests/Pods-Pnwed-PnwedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDA3EE07BE0EEFF368C03E6B /* Pods-Pnwed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed.release.xcconfig"; path = "Target Support Files/Pods-Pnwed/Pods-Pnwed.release.xcconfig"; sourceTree = "<group>"; };
 		C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PnwedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,6 +285,9 @@
 		64F6A6362C02729B004E6E95 /* Leaks */ = {
 			isa = PBXGroup;
 			children = (
+				64F6A6492C033EC9004E6E95 /* View */,
+				64F6A6462C033B7C004E6E95 /* LeakCell */,
+				64F6A6432C033B5E004E6E95 /* ViewModel */,
 				64F6A6372C0272B4004E6E95 /* LeaksVC.swift */,
 			);
 			path = Leaks;
@@ -297,6 +308,31 @@
 				64F6A6412C0282DE004E6E95 /* AdBlockerViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		64F6A6432C033B5E004E6E95 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A6442C033B6B004E6E95 /* LeaksViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		64F6A6462C033B7C004E6E95 /* LeakCell */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A6472C033B8B004E6E95 /* LeakCell.swift */,
+			);
+			path = LeakCell;
+			sourceTree = "<group>";
+		};
+		64F6A6492C033EC9004E6E95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A64A2C033F03004E6E95 /* ModalCheckVC.swift */,
+				64F6A64C2C03448E004E6E95 /* ModalCheckViewModel.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		82F1CF0BDE8E65241F2C00CE /* Frameworks */ = {
@@ -568,15 +604,19 @@
 				64F6A6342C027207004E6E95 /* MainTabBar.swift in Sources */,
 				64EEC60C2BFE65FC00C895F8 /* NetworkManager.swift in Sources */,
 				64F6A62C2C026FA6004E6E95 /* UserDefaultsConvertible.swift in Sources */,
+				64F6A64B2C033F03004E6E95 /* ModalCheckVC.swift in Sources */,
 				64F6A62A2C026F6D004E6E95 /* UserDefaultsWrapper.swift in Sources */,
 				64F6A61D2C01E7E5004E6E95 /* ProjectConstants.swift in Sources */,
 				64EEC60F2BFE687A00C895F8 /* PNWService.swift in Sources */,
 				64F6A62E2C026FD2004E6E95 /* UserDefaultsKeys.swift in Sources */,
+				64F6A6452C033B6B004E6E95 /* LeaksViewModel.swift in Sources */,
 				64F6A63D2C027520004E6E95 /* SwitchCell.swift in Sources */,
 				64EEC5DE2BFE5FC700C895F8 /* ViewController.swift in Sources */,
+				64F6A6482C033B8B004E6E95 /* LeakCell.swift in Sources */,
 				64EEC5DA2BFE5FC700C895F8 /* AppDelegate.swift in Sources */,
 				64F6A63F2C02783B004E6E95 /* SwitchCellModel.swift in Sources */,
 				64F6A6202C025757004E6E95 /* NetworkManagerProtocol.swift in Sources */,
+				64F6A64D2C03448E004E6E95 /* ModalCheckViewModel.swift in Sources */,
 				64F6A63A2C0272C1004E6E95 /* AdBlockerVC.swift in Sources */,
 				64EEC5DC2BFE5FC700C895F8 /* SceneDelegate.swift in Sources */,
 				64F6A6422C0282DE004E6E95 /* AdBlockerViewModel.swift in Sources */,
