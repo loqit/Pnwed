@@ -102,7 +102,7 @@ class PaywallVC: UIViewController {
         yearlyButton.snp.makeConstraints { make in
             make.leading.equalTo(20)
             make.trailing.equalTo(-20)
-            make.top.equalTo(v.snp.bottom).offset(4)
+            make.top.equalTo(weeklyButton.snp.bottom).offset(4)
             make.height.equalTo(60)
         }
         

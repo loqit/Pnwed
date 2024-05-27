@@ -140,7 +140,6 @@ class ModalCheckVC: UIViewController {
         performCheck(for: input)
     }
     
-    // TODO: Refactor this
     @objc private func addButtonPressed() {
         viewModel.saveCheck(check: .init(type: checkType == .account ? "Account Check: \(inputTextField.text ?? "")" : "Password Check",
                                          placement: "history",

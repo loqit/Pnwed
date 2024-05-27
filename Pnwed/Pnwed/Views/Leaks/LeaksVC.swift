@@ -39,7 +39,6 @@ class LeaksVC: UIViewController {
     
     // MARK: - Setup
     
-    // TODO: Add trigers to reload table view
     private func setupView() {
         view.backgroundColor = .white
         setupNavigationBar()

@@ -24,7 +24,7 @@ enum PNWEndpoint {
     private var fullPath: String {
         switch self {
         case .allBranchesForAccount(let account):
-            return "\(ProjectConstants.breachesBaseURL)/breachedaccount/\(account)"
+            return "\(ProjectConstants.breachesBaseURL)/breachedaccount/\(account)?truncateResponse=false"
         case .searchByRange(let passHash):
             return "\(ProjectConstants.pasBaseURL)/\(passHash)"
         }

@@ -29,7 +29,6 @@ class AdBlockerVC: UIViewController {
         return button
     }()
     
-    // TODO: Do DI
     private let viewModel: AdBlockerViewModel = AdBlockerViewModel()
     
     // MARK: - Lifecycle
@@ -48,7 +47,6 @@ class AdBlockerVC: UIViewController {
         setupTableView()
     }
     
-    // TODO: Rewrite this
     private func setupConstraints() {
         view.addSubview(settingsTableView)
         settingsTableView.snp.makeConstraints { make in

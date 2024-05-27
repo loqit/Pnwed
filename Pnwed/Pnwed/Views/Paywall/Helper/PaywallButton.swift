@@ -142,9 +142,3 @@ public enum SubscriptionType {
     case yearly
     case weekly
 }
-
-extension UIView {
-    func addSubviews(_ views: UIView...) {
-        views.forEach { addSubview($0) }
-    }
-}

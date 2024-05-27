@@ -25,7 +25,6 @@ final class ModalCheckViewModel {
     func checkAccount(account: String) async throws -> [Breach] {
        // let result = try await pnwService.getBreachesData(account: account)
         breaches = generateMockBreaches(count: 3)
-       // print(result)
         return breaches
     }
     
@@ -33,14 +32,12 @@ final class ModalCheckViewModel {
         let checksString: Data = UserDefaultsWrapper.shared.get(forKey: .checks, defaultValue: Data())
         var decodedData = (try? PropertyListDecoder().decode([Check].self, from: checksString)) ?? []
         decodedData.append(check)
-        print("🤡", decodedData, recentCheck)
         let recentData = decodedData.filter { $0.placement == "recentChecks" }
         if recentCheck && recentData.count > 2 {
             if let index = decodedData.firstIndex(where: { $0.placement == "recentChecks" }) {
                 decodedData.remove(at: index)
             }
         }
-        print("🤡", decodedData)
         if let encodedData = try? PropertyListEncoder().encode(decodedData) {
             UserDefaultsWrapper.shared.set(encodedData, forKey: .checks)
         }
