@@ -275,6 +275,7 @@
 		64F6A62F2C02717A004E6E95 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				64F6A66C2C0480AA004E6E95 /* ModalCheck */,
 				64F6A6602C03C8FE004E6E95 /* Paywall */,
 				64F6A64E2C034C17004E6E95 /* BreachDetails */,
 				64F6A6362C02729B004E6E95 /* Leaks */,
@@ -305,7 +306,6 @@
 		64F6A6362C02729B004E6E95 /* Leaks */ = {
 			isa = PBXGroup;
 			children = (
-				64F6A6492C033EC9004E6E95 /* View */,
 				64F6A6462C033B7C004E6E95 /* LeakCell */,
 				64F6A6432C033B5E004E6E95 /* ViewModel */,
 				64F6A6372C0272B4004E6E95 /* LeaksVC.swift */,
@@ -349,7 +349,6 @@
 		64F6A6492C033EC9004E6E95 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				64F6A65F2C0367D2004E6E95 /* ViewModel */,
 				64F6A64A2C033F03004E6E95 /* ModalCheckVC.swift */,
 			);
 			path = View;
@@ -413,6 +412,15 @@
 				64F6A66A2C046B5F004E6E95 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		64F6A66C2C0480AA004E6E95 /* ModalCheck */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A65F2C0367D2004E6E95 /* ViewModel */,
+				64F6A6492C033EC9004E6E95 /* View */,
+			);
+			path = ModalCheck;
 			sourceTree = "<group>";
 		};
 		82F1CF0BDE8E65241F2C00CE /* Frameworks */ = {
