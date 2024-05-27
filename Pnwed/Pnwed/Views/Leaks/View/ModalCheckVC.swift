@@ -30,6 +30,11 @@ class ModalCheckVC: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Check", for: .normal)
         button.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .lightGray
+        button.setTitleColor(.white, for: .normal)
+        button.layer.masksToBounds = true
+        button.isEnabled = false
         return button
     }()
     
@@ -45,7 +50,11 @@ class ModalCheckVC: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
         button.setTitle("Save Response", for: .normal)
-      //  button.isEnabled = false
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .lightGray
+        button.setTitleColor(.white, for: .normal)
+        button.layer.masksToBounds = true
+        button.isEnabled = false
         return button
     }()
     
@@ -80,6 +89,7 @@ class ModalCheckVC: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        setupBindings()
     }
     
     // MARK: - Setup
@@ -92,7 +102,7 @@ class ModalCheckVC: UIViewController {
         
         view.addSubview(inputLabel)
         inputLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }
@@ -108,6 +118,7 @@ class ModalCheckVC: UIViewController {
         checkButton.snp.makeConstraints { make in
             make.top.equalTo(inputTextField.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
+            make.width.equalTo(100)
         }
         
         view.addSubview(resultLabel)
@@ -121,12 +132,24 @@ class ModalCheckVC: UIViewController {
         saveButton.snp.makeConstraints { make in
             make.top.equalTo(resultLabel.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
+            make.width.equalTo(150)
         }
         
         view.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+    }
+    
+    private func setupBindings() {
+        inputTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc private func textFieldDidChange() {
+        checkButton.isEnabled = !(inputTextField.text?.isEmpty ?? true)
+        checkButton.backgroundColor = (inputTextField.text?.isEmpty ?? true) ? .lightGray : .systemRed
+        saveButton.isEnabled = false
+        saveButton.backgroundColor = .lightGray
     }
     
     @objc private func checkButtonTapped() {
@@ -137,6 +160,7 @@ class ModalCheckVC: UIViewController {
         
         activityIndicator.startAnimating()
         checkButton.isEnabled = false
+        checkButton.backgroundColor = .lightGray
         performCheck(for: input)
     }
     
@@ -145,67 +169,61 @@ class ModalCheckVC: UIViewController {
                                          placement: "history",
                                          breaches: viewModel.breaches,
                                          stringResult: resultLabel.text ?? ""))
+        checkSaved.send()
     }
     
     private func performCheck(for input: String) {
-        switch checkType {
-        case .password:
-            checkPassword(password: input)
-        case .account:
-            checkAccount(account: input)
-        }
-    }
-    
-    private func checkPassword(password: String) {
-        Task {
-            do {
-                guard let result = try await viewModel.checkPassword(password: password) else {
-                    resultLabel.text = "Your password is safe"
-                    resultLabel.textColor = .black
-                    viewModel.saveCheck(check: .init(type: "Password Check",
-                                                     placement: "recentChecks",
-                                                     breaches: nil,
-                                                     stringResult: resultLabel.text ?? ""), recentCheck: true)
-                    checkSaved.send()
-                    return
-                }
-                resultLabel.text = "Your password have been compromised \(result) times"
-                resultLabel.textColor = .black
-                viewModel.saveCheck(check: .init(type: "Password Check",
-                                                 placement: "recentChecks",
-                                                 breaches: nil,
-                                                 stringResult: resultLabel.text ?? ""), recentCheck: true)
-                checkSaved.send()
-            } catch {
-                resultLabel.text = "Something went wrong. Please, try again!"
-                resultLabel.tintColor = .red
-            }
-        }
-        DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-            self.checkButton.isEnabled = true
-        }
-    }
-    
-    private func checkAccount(account: String) {
-        Task {
-            do {
-                let result: [Breach] = try await viewModel.checkAccount(account: account)
-                resultLabel.text = result.isEmpty ? "Your account is safe" : "Your account have been compromised \(result.count) times"
-                resultLabel.textColor = .black
-                viewModel.saveCheck(check: .init(type: "Account Check: \(inputTextField.text ?? "")",
-                                                 placement: "recentChecks",
-                                                 breaches: result,
-                                                 stringResult: resultLabel.text ?? ""), recentCheck: true)
-                checkSaved.send()
-            } catch {
-                resultLabel.text = "Something went wrong. Please, try again!"
-                resultLabel.tintColor = .red
-            }
-        }
-        DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-            self.checkButton.isEnabled = true
-        }
-    }
+         Task {
+             do {
+                 switch checkType {
+                 case .password:
+                     try await checkPassword(password: input)
+                 case .account:
+                     try await checkAccount(account: input)
+                 }
+                 saveButton.isEnabled = true
+                 saveButton.backgroundColor = .systemGreen
+             } catch {
+                 resultLabel.text = "Something went wrong. Please, try again!"
+                 resultLabel.textColor = .red
+             }
+             DispatchQueue.main.async { [weak self] in
+                 guard let self else { return }
+                 self.activityIndicator.stopAnimating()
+                 self.checkButton.isEnabled = true
+                 self.checkButton.backgroundColor = .systemRed
+             }
+         }
+     }
+     
+     private func checkPassword(password: String) async throws {
+         guard let result = try await viewModel.checkPassword(password: password) else {
+             resultLabel.text = "Your password is safe"
+             resultLabel.textColor = .black
+             viewModel.saveCheck(check: .init(type: "Password Check",
+                                              placement: "recentChecks",
+                                              breaches: nil,
+                                              stringResult: resultLabel.text ?? ""), recentCheck: true)
+             checkSaved.send()
+             return
+         }
+         resultLabel.text = "Your password has been compromised \(result) times"
+         resultLabel.textColor = .black
+         viewModel.saveCheck(check: .init(type: "Password Check",
+                                          placement: "recentChecks",
+                                          breaches: nil,
+                                          stringResult: resultLabel.text ?? ""), recentCheck: true)
+         checkSaved.send()
+     }
+     
+     private func checkAccount(account: String) async throws {
+         let result: [Breach] = try await viewModel.checkAccount(account: account)
+         resultLabel.text = result.isEmpty ? "Your account is safe" : "Your account has been compromised \(result.count) times"
+         resultLabel.textColor = .black
+         viewModel.saveCheck(check: .init(type: "Account Check: \(inputTextField.text ?? "")",
+                                          placement: "recentChecks",
+                                          breaches: result,
+                                          stringResult: resultLabel.text ?? ""), recentCheck: true)
+         checkSaved.send()
+     }
 }
