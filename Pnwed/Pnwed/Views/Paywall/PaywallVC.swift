@@ -27,14 +27,14 @@ class PaywallVC: UIViewController {
     }()
     
     private lazy var yearlyButton: PaywallButton = {
-        let view = PaywallButton(product: products.first, type: .yearly)
+        let view = PaywallButton(product: viewModel.products.first, type: .yearly)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(yearlyAction)))
         return view
     }()
     
-    private lazy var monthlyButton: PaywallButton = {
-        let view = PaywallButton(product: products.last, type: .weekly)
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(monthlyAction)))
+    private lazy var weeklyButton: PaywallButton = {
+        let view = PaywallButton(product: viewModel.products.last, type: .weekly)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(weeklyAction)))
         return view
     }()
     
@@ -63,8 +63,7 @@ class PaywallVC: UIViewController {
         return button
     }()
     
-    private var products: [AdaptyPaywallProduct] = [AdaptyPaywallProduct]()
-    private lazy var selectedProduct = products.first
+    private let viewModel = PaywallViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,8 +90,8 @@ class PaywallVC: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        view.addSubview(monthlyButton)
-        monthlyButton.snp.makeConstraints { make in
+        view.addSubview(weeklyButton)
+        weeklyButton.snp.makeConstraints { make in
             make.leading.equalTo(20)
             make.trailing.equalTo(-20)
             make.top.equalTo(titleLabel.snp.bottom).offset(40)
@@ -103,7 +102,7 @@ class PaywallVC: UIViewController {
         yearlyButton.snp.makeConstraints { make in
             make.leading.equalTo(20)
             make.trailing.equalTo(-20)
-            make.top.equalTo(monthlyButton.snp.bottom).offset(4)
+            make.top.equalTo(v.snp.bottom).offset(4)
             make.height.equalTo(60)
         }
         
@@ -130,39 +129,18 @@ class PaywallVC: UIViewController {
     
     @objc func yearlyAction() {
         yearlyButton.animateTap()
-        monthlyButton.deselectTap()
-        selectedProduct = products.first
+        weeklyButton.deselectTap()
+        viewModel.selectedProduct = viewModel.products.first
     }
     
-    @objc func monthlyAction() {
-        monthlyButton.animateTap()
+    @objc func weeklyAction() {
+        weeklyButton.animateTap()
         yearlyButton.deselectTap()
-        selectedProduct = products.last
+        viewModel.selectedProduct = viewModel.products.last
     }
     
     private func fetchSubscriptionDetails() {
-        Adapty.getPaywall(placementId: "adblocker") { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success(let paywall):
-                self.getProducts(from: paywall)
-            case .failure(let error):
-                print("Paywall error \(error)")
-            }
-        }
-
-    }
-    
-    private func getProducts(from paywall: AdaptyPaywall) {
-        Adapty.getPaywallProducts(paywall: paywall) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success(let products):
-                self.products = products
-            case .failure(let error):
-                print("Error fetching products \(error)")
-            }
-        }
+        viewModel.fetchSubscriptionDetails()
     }
     
     @objc private func closeButtonTapped() {
@@ -170,14 +148,6 @@ class PaywallVC: UIViewController {
     }
     
     @objc private func continueButtonTapped() {
-        guard let selectedProduct else { return }
-        Adapty.makePurchase(product: selectedProduct) { result in
-            switch result {
-            case .success(let purchaseInfo):
-                print("Successful purchase : \(purchaseInfo)")
-            case .failure(let error):
-                print("Purchase error: \(error)")
-            }
-        }
+        viewModel.purchase()
     }
 }

@@ -45,6 +45,7 @@
 		64F6A65E2C03677D004E6E95 /* Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A65D2C03677D004E6E95 /* Check.swift */; };
 		64F6A6622C03C90F004E6E95 /* PaywallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6612C03C90F004E6E95 /* PaywallVC.swift */; };
 		64F6A6652C03D1D1004E6E95 /* PaywallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6642C03D1D1004E6E95 /* PaywallButton.swift */; };
+		64F6A6682C046464004E6E95 /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F6A6672C046464004E6E95 /* PaywallViewModel.swift */; };
 		89B5F0C6CE31B9365076E1FF /* Pods_PnwedTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		64F6A65D2C03677D004E6E95 /* Check.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Check.swift; sourceTree = "<group>"; };
 		64F6A6612C03C90F004E6E95 /* PaywallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallVC.swift; sourceTree = "<group>"; };
 		64F6A6642C03D1D1004E6E95 /* PaywallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallButton.swift; sourceTree = "<group>"; };
+		64F6A6672C046464004E6E95 /* PaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModel.swift; sourceTree = "<group>"; };
 		713807CE7338D4C4807E7223 /* Pods-Pnwed-PnwedUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed-PnwedUITests.debug.xcconfig"; path = "Target Support Files/Pods-Pnwed-PnwedUITests/Pods-Pnwed-PnwedUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDA3EE07BE0EEFF368C03E6B /* Pods-Pnwed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pnwed.release.xcconfig"; path = "Target Support Files/Pods-Pnwed/Pods-Pnwed.release.xcconfig"; sourceTree = "<group>"; };
 		C1ECD6CD8EE66EAC18F4785D /* Pods_PnwedTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PnwedTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -379,6 +381,7 @@
 		64F6A6602C03C8FE004E6E95 /* Paywall */ = {
 			isa = PBXGroup;
 			children = (
+				64F6A6662C046450004E6E95 /* ViewModel */,
 				64F6A6632C03D1C2004E6E95 /* Helper */,
 				64F6A6612C03C90F004E6E95 /* PaywallVC.swift */,
 			);
@@ -391,6 +394,14 @@
 				64F6A6642C03D1D1004E6E95 /* PaywallButton.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		64F6A6662C046450004E6E95 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				64F6A6672C046464004E6E95 /* PaywallViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		82F1CF0BDE8E65241F2C00CE /* Frameworks */ = {
@@ -661,6 +672,7 @@
 				64F6A6382C0272B4004E6E95 /* LeaksVC.swift in Sources */,
 				64F6A6272C026DC2004E6E95 /* String+Extension.swift in Sources */,
 				64F6A65C2C03550D004E6E95 /* Model.xcdatamodeld in Sources */,
+				64F6A6682C046464004E6E95 /* PaywallViewModel.swift in Sources */,
 				64F6A61B2C01E70A004E6E95 /* PNWEndpoint.swift in Sources */,
 				64F6A6342C027207004E6E95 /* MainTabBar.swift in Sources */,
 				64EEC60C2BFE65FC00C895F8 /* NetworkManager.swift in Sources */,
