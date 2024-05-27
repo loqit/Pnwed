@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class AdBlockerVC: UIViewController {
     
@@ -21,15 +22,17 @@ class AdBlockerVC: UIViewController {
     private lazy var premiumButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Get Premium", for: .normal)
+        button.setTitle("Get Premium".localized, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(handlePremiumButton), for: .touchUpInside)
         button.layer.cornerRadius = 10
         button.backgroundColor = .systemOrange
+        button.isHidden = UserDefaultsWrapper.shared.get(forKey: .isPremium, defaultValue: false)
         return button
     }()
     
     private let viewModel: AdBlockerViewModel = AdBlockerViewModel()
+    private var subscriptions = Set<AnyCancellable>()
     
     // MARK: - Lifecycle
     
@@ -75,7 +78,12 @@ class AdBlockerVC: UIViewController {
     @objc
     private func handlePremiumButton() {
         let paywallVC = PaywallVC()
-      //  paywallVC.modalPresentationStyle = .overFullScreen
+        paywallVC.setPremium
+            .sink { [weak self] in
+                guard let self else { return }
+                self.premiumButton.isHidden = true
+            }
+            .store(in: &subscriptions)
         self.present(paywallVC, animated: true)
     }
 }

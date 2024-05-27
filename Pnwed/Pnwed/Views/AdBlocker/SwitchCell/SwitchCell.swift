@@ -23,7 +23,7 @@ class SwitchCell: UITableViewCell {
     private lazy var toggleButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Off", for: .normal)
+        button.setTitle("Off".localized, for: .normal)
         button.backgroundColor = .red
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(handleButtonToggle), for: .touchUpInside)
@@ -76,13 +76,13 @@ class SwitchCell: UITableViewCell {
     @objc
     private func handleButtonToggle() {
         guard let settingKey else { return }
-        let isOn = toggleButton.title(for: .normal) == "Off"
+        let isOn = toggleButton.title(for: .normal) == "Off".localized
         updateButtonState(isOn: isOn, animated: true)
         UserDefaultsWrapper.shared.set(isOn, forKey: settingKey)
     }
     
     private func updateButtonState(isOn: Bool, animated: Bool) {
-        let newTitle = isOn ? "On" : "Off"
+        let newTitle = isOn ? "On".localized : "Off".localized
         let newColor: UIColor = isOn ? .systemGreen : .systemRed
         
         let updates = {

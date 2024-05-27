@@ -20,4 +20,12 @@ extension String {
         let hexString = digest.map { String(format: "%02hhx", $0) }.joined()
         return hexString
     }
+    
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+
+    func localized(with arguments: CVarArg...) -> String {
+        return String(format: localized, arguments: arguments)
+    }
 }

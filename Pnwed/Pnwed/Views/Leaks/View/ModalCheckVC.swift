@@ -28,7 +28,7 @@ class ModalCheckVC: UIViewController {
     
     private lazy var checkButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Check", for: .normal)
+        button.setTitle("Check".localized, for: .normal)
         button.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
         button.layer.cornerRadius = 10
         button.backgroundColor = .lightGray
@@ -49,7 +49,7 @@ class ModalCheckVC: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-        button.setTitle("Save Response", for: .normal)
+        button.setTitle("Save Response".localized, for: .normal)
         button.layer.cornerRadius = 10
         button.backgroundColor = .lightGray
         button.setTitleColor(.white, for: .normal)
@@ -96,9 +96,9 @@ class ModalCheckVC: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .white
-        title = checkType == .password ? "Check Password" : "Check Account"
+        title = checkType == .password ? "Check Password".localized : "Check Account".localized
         
-        inputLabel.text = checkType == .password ? "Enter Password" : "Enter Account"
+        inputLabel.text = checkType == .password ? "Enter Password".localized  : "Enter Account".localized
         
         view.addSubview(inputLabel)
         inputLabel.snp.makeConstraints { make in
@@ -154,7 +154,7 @@ class ModalCheckVC: UIViewController {
     
     @objc private func checkButtonTapped() {
         guard let input = inputTextField.text, !input.isEmpty else {
-            resultLabel.text = "Please enter a valid \(checkType == .password ? "password" : "account")"
+            resultLabel.text = "Please enter a valid \(checkType == .password ? "password".localized  : "account".localized )".localized
             return
         }
         
@@ -165,7 +165,8 @@ class ModalCheckVC: UIViewController {
     }
     
     @objc private func addButtonPressed() {
-        viewModel.saveCheck(check: .init(type: checkType == .account ? "Account Check: \(inputTextField.text ?? "")" : "Password Check",
+        let type = checkType == .account ? "Account Check: \(inputTextField.text ?? "")".localized  : "Password Check".localized
+        viewModel.saveCheck(check: .init(type: type ,
                                          placement: "history",
                                          breaches: viewModel.breaches,
                                          stringResult: resultLabel.text ?? ""))
@@ -184,7 +185,7 @@ class ModalCheckVC: UIViewController {
                  saveButton.isEnabled = true
                  saveButton.backgroundColor = .systemGreen
              } catch {
-                 resultLabel.text = "Something went wrong. Please, try again!"
+                 resultLabel.text = "Something went wrong. Please, try again!".localized
                  resultLabel.textColor = .red
              }
              DispatchQueue.main.async { [weak self] in
@@ -198,18 +199,18 @@ class ModalCheckVC: UIViewController {
      
      private func checkPassword(password: String) async throws {
          guard let result = try await viewModel.checkPassword(password: password) else {
-             resultLabel.text = "Your password is safe"
+             resultLabel.text = "Your password is safe".localized
              resultLabel.textColor = .black
-             viewModel.saveCheck(check: .init(type: "Password Check",
+             viewModel.saveCheck(check: .init(type: "Password Check".localized,
                                               placement: "recentChecks",
                                               breaches: nil,
                                               stringResult: resultLabel.text ?? ""), recentCheck: true)
              checkSaved.send()
              return
          }
-         resultLabel.text = "Your password has been compromised \(result) times"
+         resultLabel.text = "Your password has been compromised \(result) times".localized
          resultLabel.textColor = .black
-         viewModel.saveCheck(check: .init(type: "Password Check",
+         viewModel.saveCheck(check: .init(type: "Password Check".localized,
                                           placement: "recentChecks",
                                           breaches: nil,
                                           stringResult: resultLabel.text ?? ""), recentCheck: true)
@@ -218,9 +219,9 @@ class ModalCheckVC: UIViewController {
      
      private func checkAccount(account: String) async throws {
          let result: [Breach] = try await viewModel.checkAccount(account: account)
-         resultLabel.text = result.isEmpty ? "Your account is safe" : "Your account has been compromised \(result.count) times"
+         resultLabel.text = result.isEmpty ? "Your account is safe".localized : "Your account has been compromised \(result.count) times".localized
          resultLabel.textColor = .black
-         viewModel.saveCheck(check: .init(type: "Account Check: \(inputTextField.text ?? "")",
+         viewModel.saveCheck(check: .init(type: "Account Check: \(inputTextField.text ?? "")".localized,
                                           placement: "recentChecks",
                                           breaches: result,
                                           stringResult: resultLabel.text ?? ""), recentCheck: true)

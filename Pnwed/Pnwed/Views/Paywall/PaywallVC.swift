@@ -8,19 +8,20 @@
 import UIKit
 import SnapKit
 import Adapty
+import Combine
 
 class PaywallVC: UIViewController {
     
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Close", for: .normal)
+        button.setTitle("Close".localized, for: .normal)
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Choose Your Plan"
+        label.text = "Choose Your Plan".localized
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textAlignment = .center
         return label
@@ -54,7 +55,7 @@ class PaywallVC: UIViewController {
     
     private lazy var continueButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Continue", for: .normal)
+        button.setTitle("Continue".localized, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.layer.cornerRadius = 15
         button.backgroundColor = .systemBlue
@@ -64,6 +65,7 @@ class PaywallVC: UIViewController {
     }()
     
     private let viewModel = PaywallViewModel()
+    var setPremium = PassthroughSubject<Void, Never>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,5 +151,8 @@ class PaywallVC: UIViewController {
     
     @objc private func continueButtonTapped() {
         viewModel.purchase()
+        UserDefaultsWrapper.shared.set(true, forKey: .isPremium)
+        setPremium.send()
+        self.dismiss(animated: true)
     }
 }

@@ -14,4 +14,5 @@ enum UserDefaultsKeys: String {
     case enablePushes = "enablePushes"
     
     case checks = "checks"
+    case isPremium = "isPremium"
 }

@@ -13,7 +13,7 @@ class LeaksVC: UIViewController {
     // MARK: - Properties
     
     private let segmentedControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: ["Recent Checks", "History"])
+        let control = UISegmentedControl(items: ["Recent Checks".localized, "History".localized])
         control.selectedSegmentIndex = 0
         return control
     }()
@@ -50,7 +50,7 @@ class LeaksVC: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = "Leaks"
+        title = "Leaks".localized
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddMenu))
     }
     
@@ -87,13 +87,13 @@ class LeaksVC: UIViewController {
     
     @objc private func showAddMenu() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Check Password", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Check Password".localized, style: .default, handler: { _ in
             self.presentCheckModal(for: .password)
         }))
-        alert.addAction(UIAlertAction(title: "Check Account", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Check Account".localized, style: .default, handler: { _ in
             self.presentCheckModal(for: .account)
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -129,7 +129,7 @@ extension LeaksVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, 
                    didSelectRowAt indexPath: IndexPath) {
         let check = selectedSegmentIndex == 0 ? viewModel.recentChecks[indexPath.row] : viewModel.historyChecks[indexPath.row]
-        if check.type.contains("Account") && !(check.breaches?.isEmpty ?? true) {
+        if check.type.contains("Account".localized) && !(check.breaches?.isEmpty ?? true) {
             let detailsVC = BreachDetailVC(breaches: check.breaches ?? [])
             DispatchQueue.main.async {
                 self.present(detailsVC, animated: true)
